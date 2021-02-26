@@ -104,11 +104,6 @@ class Tableapp extends Component {
                 lastcolor: colorid[colorid.length - 1].color
             })
         }
-
-        // changing the state of changecolor
-        this.setState({
-            changecolor: true,
-        });
     }
 
     // Method for focusing the input
@@ -136,13 +131,14 @@ class Tableapp extends Component {
         return (
             <div>
                 <table id="table">
-                    
+                    {/* table head components */}
                     <thead>
                         <Headrow changecolor={this.changecolor} col={this.state.column} />
                         <Changecolorbutton changehandler={this.changehandler}/>
                     </thead>
 
-                    <Colorcontext.Provider value={{ colorid, changecolor: this.state.changecolor }}>
+                    {/* table row components */}
+                    <Colorcontext.Provider value={colorid}>
                         <Funccontext.Provider value={this.focusinput}>
                             <Tablebody row={this.state.row} column={this.state.column}/>
                         </Funccontext.Provider>

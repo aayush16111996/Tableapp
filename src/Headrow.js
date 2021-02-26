@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Headrow(props) {
+    console.log("head row rendering");
     return (
         <tr>
                 {props.col.map((user, id) => {
@@ -13,4 +14,4 @@ function Headrow(props) {
     )
 }
 
-export default Headrow
+export default React.memo(Headrow)

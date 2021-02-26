@@ -2,16 +2,14 @@ import React from 'react'
 
 function Headrow(props) {
     return (
-        <React.Fragment>
+        <tr>
                 {props.col.map((user, id) => {
                     return (
                         <td key={id}>
-                            <form className="formele">
-                                <input onChange={(event) => props.changecolor(event)} data-id={id} className="colorfield" type="color" name={`color${id}`} />
-                            </form>
+                                <input onChange={(event) => props.changecolor(event)} data-id={id} className="formele colorfield" type="color" name={`color${id}`} />
                         </td>)
                 })}
-        </React.Fragment>
+        </tr>
     )
 }
 

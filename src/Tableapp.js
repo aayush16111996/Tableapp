@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Changecolorbutton from './Changecolorbutton';
 import Decrease from './Decrease';
 import Headrow from './Headrow';
 import Increase from './Increase';
@@ -26,7 +27,7 @@ class Tableapp extends Component {
             changecolor: false,
             lastcolor: null,
             changetext:"",
-            totalblocks:0
+            clickedblocks:0
         }
 
         // creating an input ref for focusing input field
@@ -43,6 +44,7 @@ class Tableapp extends Component {
 
     // Method for Increasing the rows
     handleincreaserows = () => {
+        console.log("let's see");
         this.setState((state) => {
             return { row: [...state.row, "red"] }
         });
@@ -75,6 +77,7 @@ class Tableapp extends Component {
     handledecreasecolumns = () => {
 
         if (this.state.column.length > 1) {
+            colorid.pop();
             this.setState((state) => {
                 state.column.pop();
                 return { column: [...state.column] }
@@ -86,6 +89,7 @@ class Tableapp extends Component {
     changecolor = (e) => {
         e.target.setAttribute("value", e.target.value);
     }
+
 
     // Method for changing the background color of the indiviual table blocks
     changehandler = () => {
@@ -113,7 +117,7 @@ class Tableapp extends Component {
         // reseting the input field if new table block is clicked and getting the id of clicked block
         this.setState({
             changetext:"",
-            totalblocks: e.target.getAttribute("data-id")
+            clickedblocks: e.target.getAttribute("data-id")
         });
     }
 
@@ -122,25 +126,22 @@ class Tableapp extends Component {
         this.setState({
             changetext:e.target.value,
         },()=>{
-            textele[this.state.totalblocks].innerHTML =  this.state.changetext
+            textele[this.state.clickedblocks].innerHTML =  this.state.changetext
         });
     }
 
     // render method
     render() {
+        console.log("re-rendering");
         return (
             <div>
                 <table id="table">
+                    
                     <thead>
-                        <tr>
-                            <Headrow changecolor={this.changecolor} col={this.state.column} />
-                        </tr>
-                        <tr>
-                            <td id="changebutton">
-                                <button onClick={this.changehandler}>Change</button>
-                            </td>
-                        </tr>
+                        <Headrow changecolor={this.changecolor} col={this.state.column} />
+                        <Changecolorbutton changehandler={this.changehandler}/>
                     </thead>
+
                     <Colorcontext.Provider value={{ colorid, changecolor: this.state.changecolor }}>
                         <Funccontext.Provider value={this.focusinput}>
                             <Tablebody row={this.state.row} column={this.state.column}/>

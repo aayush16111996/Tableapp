@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Increase(props) {
+    console.log("increasing rows");
     return (
         <React.Fragment>
             <button onClick={props.handleincreaserows}>increase row</button>
@@ -9,4 +10,4 @@ function Increase(props) {
     )
 }
 
-export default Increase
+export default React.memo(Increase)

@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Decrease(props) {
+    console.log("decreasing rows");
     return (
         <React.Fragment>
             <button onClick={props.handledecreaserows}>Decrease row</button>
@@ -9,4 +10,4 @@ function Decrease(props) {
     )
 }
 
-export default Decrease
+export default React.memo(Decrease)

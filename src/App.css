@@ -22,7 +22,6 @@
 }
 .formele{
   display:flex;
-  flex-direction: column;
 }
 .headinputcol{
   display:flex;

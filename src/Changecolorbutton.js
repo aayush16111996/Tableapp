@@ -4,7 +4,7 @@ function Changecolorbutton(props) {
     return (
         <tr>
             <td id="changebutton">
-                <button onClick={props.changehandler}>Change</button>
+                <button onClick={props.changehandler}>Changebutton</button>
             </td>
         </tr>
     )
